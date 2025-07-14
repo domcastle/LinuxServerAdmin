@@ -1,0 +1,59 @@
+# .bashrc
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+	. /etc/bashrc
+fi
+
+# User specific environment
+if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]
+then
+    PATH="$HOME/.local/bin:$HOME/bin:$PATH"
+fi
+PATH=$PATH:/test
+export PATH
+
+# Uncomment the following line if you don't like systemctl's auto-paging feature:
+# export SYSTEMD_PAGER=
+
+# User specific aliases and functions
+ 
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+##########################################
+# (1). 기본적인 alias
+##########################################
+# ==== 명령어를 짧게 사용하기 위한 설정 ====
+# * 자주 하는 명령어
+alias c='clear'
+##########################################
+# (3). 서버에서 사용하는 별칭(alias)
+##########################################
+#
+#	■ 웹서버(Apache) 예제
+#	* 주설정 파일   : /etc/httpd/conf/httpd.conf
+#	* 소스 디렉토리 : /var/www/html
+#	* 로그 디렉토리 : /var/log/httpd(/etc/httpd/logs)
+#
+
+# ==== 설정 파일 ====
+# 목적: 주설정 파일을 빠르게 열고 싶다.
+alias fconf='vi /etc/vsftpd/vsftpd.conf'
+alias wconf='vi /etc/httpd/conf/httpd.conf'
+
+alias vsftpd.conf='vi /etc/vsftpd/vsftpd.conf'
+alias httpd.conf='vi /etc/httpd/conf/httpd.conf'
+#
+# Sfecific Configuration
+#
+#export PS1='[\u@\h \w]\$ '
+export PS1='\[\e[31;1m\][\u@\h\[\e[33;1m\] \w]\$ \[\e[m\]'
+alias ls='ls --color=auto -h -F'
+alias pps='ps -ef | head -1 ; ps -ef | grep $1'
+alias vi='/usr/bin/vim'
+alias grep='grep --color=auto -i'
+alias df='df -hT'
+alias chrome='google-chrome --no-sandbox'
+
+# source ~/.local/share/blesh/ble.sh
